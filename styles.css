@@ -14,6 +14,8 @@ body {
   font-family: "Georgia", "Times New Roman", serif;
   margin: 0;
   color: var(--ink);
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .site-header {
@@ -51,6 +53,17 @@ body {
 main {
   padding: 24px 20px 48px;
   max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+main h1 {
+  font-size: 2.4rem;
+  margin: 10px 0 18px;
+}
+
+main p {
+  margin: 0 0 18px;
 }
 
 .people-section {
@@ -63,6 +76,7 @@ main {
   gap: 16px;
   padding: 18px 0;
   border-bottom: 1px solid var(--border);
+  text-align: center;
 }
 
 .person-card:last-child {
@@ -92,6 +106,7 @@ main {
   flex-wrap: wrap;
   gap: 10px;
   margin: 8px 0 0;
+  justify-content: center;
 }
 
 .person-links a {
@@ -117,10 +132,50 @@ main {
   margin: 8px 0 0;
   padding: 0;
   list-style: none;
+  text-align: center;
 }
 
 .person-facts li {
   margin: 0 0 4px;
+}
+
+.research-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 20px;
+}
+
+.pillar {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  align-items: center;
+}
+
+.pillar:last-child {
+  border-bottom: none;
+}
+
+.pillar h2 {
+  margin: 0 0 8px;
+}
+
+.pillar-media {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  color: var(--muted);
+  background: var(--wash);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
 }
 
 .pub-year {
@@ -202,6 +257,14 @@ main {
   }
 
   .person-photo {
+    max-width: 220px;
+  }
+
+  .pillar {
+    grid-template-columns: 1fr;
+  }
+
+  .pillar-media {
     max-width: 220px;
   }
 }
