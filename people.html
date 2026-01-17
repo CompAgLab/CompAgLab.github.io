@@ -6,7 +6,12 @@
     <title>People | CompAgLab</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-people">
+    <div class="site-background" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="images/hero/corn-sunset-poster.jpg">
+        <source src="videos/corn-sunset.mp4" type="video/mp4" />
+      </video>
+    </div>
     <header class="site-header">
       <nav aria-label="Primary">
         <ul>
@@ -18,8 +23,9 @@
       </nav>
     </header>
     <main>
-      <h1>People</h1>
-      <section class="people-section">
+      <div class="content-panel">
+        <h1>People</h1>
+        <section class="people-section">
         <article class="person-card">
           <div class="person-photo">
             <img src="images/people/ethan-pickering.JPG" alt="Ethan Pickering" />
@@ -43,10 +49,10 @@
             </div>
           </div>
         </article>
-      </section>
+        </section>
 
-      <section class="people-section">
-        <h2>Lab Members</h2>
+        <section class="people-section">
+          <h2>Lab Members</h2>
 
         <article class="person-card">
           <div class="person-photo">
@@ -159,7 +165,8 @@
             </details>
           </div>
         </article>
-      </section>
+        </section>
+      </div>
     </main>
   </body>
 </html>

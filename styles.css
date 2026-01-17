@@ -16,12 +16,39 @@ body {
   color: var(--ink);
   font-size: 18px;
   line-height: 1.6;
+  background: #000000;
+}
+
+body.page-research {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.72)
+    ),
+    url("images/backgrounds/smart-ag1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.page-publications {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.72)
+    ),
+    url("images/backgrounds/corn.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .site-header {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 12px 20px 0;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .site-header ul {
@@ -57,6 +84,71 @@ main {
   text-align: center;
 }
 
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.site-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-panel {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 28px 24px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+body.page-home .content-panel {
+  background: rgba(0, 0, 0, 0.38);
+  box-shadow: none;
+}
+
+body.page-home main {
+  font-size: 1.25em;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width: 1400px;
+}
+
+body.page-home main p {
+  margin: 0 0 12px;
+}
+
+body.page-home .hero-content {
+  padding: 12px 4px;
+  max-width: 1400px;
+}
+
+body.page-home .hero-content h1 {
+  margin-top: 48px;
+}
+
+body.page-home .hero-content p {
+  font-size: 1.1em;
+  line-height: 1.75;
+  margin-bottom: 26px;
+}
+
+.uga {
+  color: #ba0c2f;
+  font-weight: 700;
+}
+
+.content-panel h1,
+.content-panel h2,
+.content-panel p,
+.content-panel li {
+  color: var(--ink);
+  text-shadow: none;
+}
+
 main h1 {
   font-size: 2.4rem;
   margin: 10px 0 18px;
@@ -64,6 +156,31 @@ main h1 {
 
 main p {
   margin: 0 0 18px;
+}
+
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 36px 28px;
+  max-width: 860px;
+}
+
+.hero-content h1 {
+  color: #ffffff;
+}
+
+.hero-content p {
+  color: #f4f4f4;
 }
 
 .people-section {

@@ -6,7 +6,12 @@
     <title>CompAgLab</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-home">
+    <div class="site-background" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="images/hero/soy-poster.jpg">
+        <source src="videos/soy-background.mp4" type="video/mp4" />
+      </video>
+    </div>
     <header class="site-header">
       <nav aria-label="Primary">
         <ul>
@@ -18,29 +23,37 @@
       </nav>
     </header>
     <main>
-      <h1>Welcome to the Computational Agriculture Lab!</h1>
-      <p>
-        We explore how computation can advance agricultural questions and
-        real-world impact.
-      </p>
-      <p>
-        A simple question guides the lab:
-        <em>
-          where can computation, modeling, and data accelerate discovery—and
-          unlock the full potential of plant biology—to design crops for
-          rapidly changing global conditions?
-        </em>
-      </p>
-      <p>
-        We are actively recruiting <strong>PhD students</strong> and
-        <strong>postdocs</strong> with strong computational backgrounds to work
-        at the intersection of AI (LLMs, mechanistic models, agentic systems),
-        biology, and agriculture.
-      </p>
-      <p>
-        We are located in the Crop and Soil Science Department in the College
-        of Agriculture and Environmental Science at the University of Georgia.
-      </p>
+      <section class="hero">
+        <div class="hero-content content-panel">
+          <h1>
+            Welcome to the<br />Computational Agriculture Lab
+            <span class="uga"> @ UGA</span>
+          </h1>
+          <p>
+            We explore how computation can advance agricultural questions and
+            real-world impact.
+          </p>
+          <p>
+            <strong>A simple question guides the lab:</strong><br />
+            <em>
+              where can computation, modeling, and data accelerate
+              discovery—and unlock the full potential of plant biology—to
+              design crops for rapidly changing global conditions?
+            </em>
+          </p>
+          <p>
+            We are actively recruiting <strong>PhD students</strong> and
+            <strong>postdocs</strong> with strong computational backgrounds to
+            work at the intersection of AI (LLMs, mechanistic models, agentic
+            systems), biology, and agriculture.
+          </p>
+          <p>
+            We are located in the Crop and Soil Science Department in the
+            College of Agriculture and Environmental Science at the University
+            of Georgia.
+          </p>
+        </div>
+      </section>
     </main>
   </body>
 </html>
