@@ -8,6 +8,21 @@ description: Add or update entries on publications.html - the ingestion workflow
 Read `site-conventions` first. Entries are grouped newest-first in
 `<section class="pub-year"><h2>YEAR</h2>`, one `<article class="pub-item">` each.
 
+## Every entry needs four things
+
+`check_site.py` fails the build if any is missing, so adding a paper is never a
+one-line edit. In the order they are easiest to get:
+
+| # | Requirement | Where it comes from |
+|---|---|---|
+| 1 | Title, `.pub-authors`, `.pub-venue` | the paper; verify the venue is current, not a stale "Submitted"/"Accepted" |
+| 2 | Exactly one non-empty `.pub-links` block | `scripts/pubs_sync.py` finds the DOI/arXiv |
+| 3 | An abstract in `<details>` | `scripts/fetch_abstract.py <doi>` |
+| 4 | A figure, **or** `class="pub-item pub-item-nofigure"` | render-and-crop, below |
+
+Nothing here may be invented. If you cannot source item 3 or 4, say so and leave
+it out — a wrong abstract or a mismatched figure is worse than an absent one.
+
 ## 1. Find out what is missing
 
 ```bash
@@ -125,6 +140,23 @@ and small multiples legible; `/ebook` at 150dpi smears them for ~1MB less).
 Confirm the page count and page-1 text survive. Vector-heavy papers will not
 shrink - leave them and rely on the DOI.
 
+## 3b. Getting a PDF when the journal is paywalled
+
+Most of the jet-noise papers were figureless purely because no PDF was on disk.
+**The arXiv preprint is usually enough** — the figures are the same, and hosting
+the preprint also gives the entry a PDF link it did not have:
+
+```bash
+curl -sL -o papers/<slug>.pdf https://arxiv.org/pdf/<arxiv-id>
+```
+
+`pubs_sync.py` prints the arXiv id when OpenAlex knows one. This worked for
+Nekkanti 2025, Li 2024 and Maia 2024.
+
+Publisher sites block direct download — `arc.aiaa.org` returns **403** — so an
+AIAA/Elsevier/Wiley paper with no preprint stays figureless unless Ethan supplies
+the PDF. Don't scrape around a paywall.
+
 ## 4. Graphical abstracts
 
 Render, then **look at the figure before choosing it**:
@@ -157,9 +189,10 @@ re-render and re-check after adjusting bounds. Write a descriptive `alt`.
 
 ## 5. Known open items
 
+- **One entry has no figure:** *Two-point measurements on the acoustic field of
+  subsonic turbulent jets* (AIAA 2023, `10.2514/6.2023-4290`). Paywalled, no
+  preprint. It carries `pub-item-nofigure`.
 - Five works are **deliberately off the site** (Ethan, 2026-09-12): two 2024 AIAA
   conference papers, a 2020 *Advances in Building Energy Research* article, and
   two JASA meeting abstracts. They are listed in `EXCLUDED_DOIS` in
   `scripts/pubs_sync.py`; delete an entry there to start reporting it again.
-- Six entries have no figure: four jet-noise papers with no local PDF, and the
-  two building-energy papers.

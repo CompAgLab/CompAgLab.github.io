@@ -67,19 +67,14 @@ reporting it again.
 
 ## Publications with no graphical abstract
 
-Six entries render without a figure (they carry `pub-item-nofigure`):
+One entry renders without a figure and carries `pub-item-nofigure`:
 
-- Bispectral decomposition and energy transfer in a turbulent jet (2025)
-- Jet mixing enhancement with Bayesian optimization… (2024)
-- The effect of flight on a turbulent jet… (2024)
-- Two-point measurements on the acoustic field of subsonic turbulent jets (2023)
-- A cross-sectional study of… electricity consumption (2017)
-- EDIFES 0.4 (2016)
+- **Two-point measurements on the acoustic field of subsonic turbulent jets**
+  (AIAA 2023, `10.2514/6.2023-4290`)
 
-**Bring them back when:** the PDFs are in `papers/`. The four jet papers have no
-local PDF, which is the only blocker — the render-and-crop recipe in
-`.claude/skills/publications-page/SKILL.md` handles the rest. The two
-building-energy papers are peripheral to the lab's topic and are lower priority.
+**Bring it back when:** Ethan supplies the PDF. It is paywalled — `arc.aiaa.org`
+returns 403 — and has no arXiv preprint, which is how the other five figureless
+entries were resolved (their preprints are now in `papers/`).
 
 ## Cosmetic debt
 
