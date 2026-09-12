@@ -16,9 +16,38 @@ images/people/          headshots         images/pubpic/   publication figures
 images/hero/            video posters     images/backgrounds/
 videos/                 background loops  papers/          PDFs + .txt BibTeX
 files/                  CV
+lightbox.js             click-to-enlarge for figures (publications + research)
 scripts/check_site.py   structural validator (run before every push)
 scripts/pubs_sync.py    publication cross-check against OpenAlex/Crossref
 ```
+
+## Layout widths
+
+Deliberately narrow margins - Ethan asked for the content to run wide:
+
+```css
+main            { max-width: 1320px; padding: 14px 10px 36px; }
+.content-panel  { padding: 20px 18px; }
+.pub-item       { grid-template-columns: 260px 1fr; }
+.pillar         { grid-template-columns: 1fr 300px; }
+```
+
+Below `700px` everything collapses to one column and `main` keeps a 12px side
+gutter. Don't reintroduce wide padding without asking.
+
+## Click-to-enlarge figures
+
+`lightbox.js` (vanilla, no dependencies, progressive enhancement) turns any
+`<img data-zoomable>` into a click-to-enlarge figure: overlay, Esc or
+click-outside to close, focus restored on close, `alt` shown as the caption.
+
+- Mark every figure `data-zoomable tabindex="0"`.
+- If a high-resolution master exists, add `data-full="images/pubpic/<slug>-full.png"`.
+  The page then ships a small thumbnail and only fetches the readable version on
+  click. Without `data-full` the lightbox falls back to `src`.
+- The page must load `<script src="lightbox.js" defer></script>`.
+
+`check_site.py` enforces all three, and that every `data-full` target exists.
 
 ## Always run the validator before pushing
 

@@ -10,6 +10,8 @@ Checks, in order:
   3. publications.html invariants: one links block per entry, no empty entries,
      figureless entries carry .pub-item-nofigure.
   4. people.html invariants: every person card has a photo that exists.
+  5. Zoomable figures: any img[data-full] points at a file that exists, and
+     every figure inside .pub-image / .pillar-media is zoomable.
 """
 import os
 import re
@@ -59,7 +61,7 @@ def check_balance_and_assets():
             fail(f"{page}: {err}")
         for tag, pos in parser.stack:
             fail(f"{page}: <{tag}> opened at {pos} never closed")
-        for url in re.findall(r'(?:src|href)="([^"]+)"', html):
+        for url in re.findall(r'(?:src|href|data-full)="([^"]+)"', html):
             if url.startswith(("http://", "https://", "#", "mailto:", "data:")):
                 continue
             if not os.path.exists(url.split("#")[0]):
@@ -105,6 +107,21 @@ def check_publications():
             fail(f"publications: no figure and not tagged nofigure: {title_of(body)[:60]!r}")
 
 
+def check_zoomable():
+    """Figures are only enlargeable if lightbox.js is loaded and they opt in."""
+    print("zoomable figures:")
+    for page in ("publications.html", "research.html"):
+        html = open(page, encoding="utf-8").read()
+        figures = re.findall(r'<div class="(?:pub-image|pillar-media)"[^>]*>\s*(<img [^>]*/>)', html)
+        missing = [f for f in figures if "data-zoomable" not in f]
+        for f in missing:
+            src = re.search(r'src="([^"]+)"', f)
+            fail(f"{page}: figure not zoomable: {src.group(1) if src else f[:60]}")
+        if figures and "lightbox.js" not in html:
+            fail(f"{page}: has zoomable figures but does not load lightbox.js")
+        print(f"  {page}: {len(figures) - len(missing)}/{len(figures)} figures zoomable")
+
+
 def check_people():
     print("people.html invariants:")
     html = open("people.html", encoding="utf-8").read()
@@ -126,6 +143,7 @@ def main():
         sys.exit("run this from the repo root")
     check_balance_and_assets()
     check_publications()
+    check_zoomable()
     check_people()
     print()
     if failures:

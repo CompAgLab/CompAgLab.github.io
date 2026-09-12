@@ -119,7 +119,14 @@ gs -sDEVICE=png16m -r300 -dFirstPage=N -dLastPage=N -dNOPAUSE -dQUIET -dBATCH \
 ```
 
 Then crop with pillow to the figure's fractional region, auto-trim white margins,
-and resize to **760px wide** (the column is 180px; 760 covers retina).
+and save **two** files from the same crop:
+
+- `images/pubpic/<slug>.png` at **760px** wide - the inline thumbnail;
+- `images/pubpic/<slug>-full.png` at up to **1800px** - what the lightbox loads
+  so the figure can actually be read.
+
+Then mark the `<img>` `data-zoomable tabindex="0" data-full="...-full.png"` (see
+`site-conventions`).
 
 **Figure 1 is not automatically the right figure.** Judge it:
 
@@ -134,10 +141,9 @@ re-render and re-check after adjusting bounds. Write a descriptive `alt`.
 
 ## 5. Known open items
 
-- Five works OpenAlex lists that are **deliberately not on the site** pending
-  Ethan's call: two 2024 AIAA conference papers (`10.2514/6.2024-3414`,
-  `10.2514/6.2024-3199`), a 2020 *Advances in Building Energy Research* article
-  (`10.1080/17512549.2020.1730239`), and two JASA meeting abstracts
-  (`10.1121/1.5137546`, `10.1121/1.5067573`). Ask before adding.
+- Five works are **deliberately off the site** (Ethan, 2026-09-12): two 2024 AIAA
+  conference papers, a 2020 *Advances in Building Energy Research* article, and
+  two JASA meeting abstracts. They are listed in `EXCLUDED_DOIS` in
+  `scripts/pubs_sync.py`; delete an entry there to start reporting it again.
 - Six entries have no figure: four jet-noise papers with no local PDF, and the
   two building-energy papers.

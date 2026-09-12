@@ -27,17 +27,25 @@ Current pillars, in order: **LLMs for Editing**, **Mechanistic Ag AI**,
 `.research-pillars` is a flex column with `gap: 22px` - pillars stack, so order in
 the file is order on the page.
 
-## Every pillar still shows "Image Placeholder"
+## Pillar artwork
 
-All five `.pillar-media` divs are literal placeholder spans. When artwork arrives,
-replace the `<span>` with an `<img>`, put the file in `images/` (a
-`images/research/` subdirectory would match the `images/people/` and
-`images/pubpic/` convention), and **remove `aria-hidden="true"`** from the wrapper
-once it holds real content, adding a descriptive `alt`.
+Each pillar now carries the figure from the paper that best represents it, reusing
+the files in `images/pubpic/` rather than duplicating them:
 
-A good source of pillar artwork is the papers themselves - see
-`publications-page` for the Ghostscript-render-then-crop recipe, which produces
-clean figures at 760px wide.
+| Pillar | Figure |
+|---|---|
+| LLMs for Editing | `farghadan2026cascade` (CASCADE, DNA language-model attributions) |
+| Mechanistic Ag AI | `kontolati2026binns` (biology-informed neural networks) |
+| Active Learning for Ag | `pickering2022discovery` (active learning in neural operators) |
+| Loss Functions for Ag | `pickering2022fomo` (Information FOMO) - **loosest fit, revisit** |
+| Agents for Ag Design | `yao2026peagent` (PEAgent framework) |
+
+The wrapper is `<div class="pillar-media">` with **no `aria-hidden`** once it holds
+a real figure, and `.pillar-media:has(img)` drops the dashed placeholder chrome.
+Figures are `data-zoomable` with a `data-full` master - see `site-conventions`.
+
+To add artwork for a new pillar, use the Ghostscript-render-then-crop recipe in
+`publications-page`, which produces a 760px thumbnail and an 1800px master.
 
 ## Writing a pillar
 

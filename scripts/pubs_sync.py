@@ -33,6 +33,17 @@ OPENALEX_AUTHORS = ["A5061968827", "A5141073323"]
 MAILTO = "ethan.pickering@uga.edu"
 SCHOLAR_PROFILE = "https://scholar.google.com/citations?user=q3KI3-0AAAAJ&hl=en&sortby=pubdate"
 
+# Works Ethan has decided to leave off the site (2026-09-12): two AIAA
+# conference papers, a building-energy article, and two JASA meeting abstracts.
+# Delete an entry here to make the script start reporting it again.
+EXCLUDED_DOIS = {
+    "10.2514/6.2024-3414",   # Nonlinear Interactions in Non-Resonant, Homogeneous Turbulent Jets
+    "10.2514/6.2024-3199",   # Resolvent Modeling of Subsonic Jet Noise
+    "10.1080/17512549.2020.1730239",  # Data analytics applied to office building electricity
+    "10.1121/1.5137546",     # Furthering resolvent-based jet noise models (abstract)
+    "10.1121/1.5067573",     # Resolvent analysis for jet noise source identification (abstract)
+}
+
 # Sources that mirror a real paper rather than being one.
 SKIP_HOSTS = ("zenodo", "research square", "bulletin of the american physical society",
               "caltechauthors", "ohiolink")
@@ -66,6 +77,8 @@ def fetch_openalex():
         if any(h in src.lower() for h in SKIP_HOSTS):
             continue
         doi = (w.get("doi") or "").replace("https://doi.org/", "")
+        if doi in EXCLUDED_DOIS:
+            continue
         arxiv = ""
         if doi.startswith("10.48550/arxiv."):
             arxiv, doi = doi.split("arxiv.", 1)[1], ""
