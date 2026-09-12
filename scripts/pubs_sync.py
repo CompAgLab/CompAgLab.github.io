@@ -42,6 +42,7 @@ EXCLUDED_DOIS = {
     "10.1080/17512549.2020.1730239",  # Data analytics applied to office building electricity
     "10.1121/1.5137546",     # Furthering resolvent-based jet noise models (abstract)
     "10.1121/1.5067573",     # Resolvent analysis for jet noise source identification (abstract)
+    "10.2514/6.2023-4290",   # Two-point measurements... -- removed 2026-09-12, paywalled, no PDF
 }
 
 # Sources that mirror a real paper rather than being one.

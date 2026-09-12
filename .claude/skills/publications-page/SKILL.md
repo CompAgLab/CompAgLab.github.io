@@ -189,10 +189,11 @@ re-render and re-check after adjusting bounds. Write a descriptive `alt`.
 
 ## 5. Known open items
 
-- **One entry has no figure:** *Two-point measurements on the acoustic field of
-  subsonic turbulent jets* (AIAA 2023, `10.2514/6.2023-4290`). Paywalled, no
-  preprint. It carries `pub-item-nofigure`.
-- Five works are **deliberately off the site** (Ethan, 2026-09-12): two 2024 AIAA
-  conference papers, a 2020 *Advances in Building Energy Research* article, and
-  two JASA meeting abstracts. They are listed in `EXCLUDED_DOIS` in
+- **Every entry currently has a figure**, so nothing carries
+  `pub-item-nofigure` right now. Keep the class and its CSS rule anyway - the
+  next paper added before its figure is cropped will need it.
+- Six works are **deliberately off the site** (Ethan, 2026-09-12): two 2024 AIAA
+  conference papers, a 2020 *Advances in Building Energy Research* article, two
+  JASA meeting abstracts, and the AIAA 2023 two-point measurements paper, which
+  was removed because it is paywalled with no preprint (see `DEFERRED.md`). They are listed in `EXCLUDED_DOIS` in
   `scripts/pubs_sync.py`; delete an entry there to start reporting it again.

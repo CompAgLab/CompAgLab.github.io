@@ -65,16 +65,51 @@ reporting it again.
 | 2019 | Furthering resolvent-based jet noise models (abstract) | `10.1121/1.5137546` |
 | 2018 | Resolvent analysis for jet noise source identification (abstract) | `10.1121/1.5067573` |
 
-## Publications with no graphical abstract
+## Publication removed: Two-point measurements (AIAA 2023)
 
-One entry renders without a figure and carries `pub-item-nofigure`:
+**Removed** 2026-09-12 from `publications.html`, along with the 2023 year section
+it was alone in. Not a quality judgement on the paper — we simply cannot host it.
+`arc.aiaa.org` returns **403** to direct download and there is no arXiv preprint,
+so it was the only entry on the site with no PDF and no figure.
 
-- **Two-point measurements on the acoustic field of subsonic turbulent jets**
-  (AIAA 2023, `10.2514/6.2023-4290`)
+Its DOI is in `EXCLUDED_DOIS` in `scripts/pubs_sync.py`; delete that line to start
+reporting it again.
 
-**Bring it back when:** Ethan supplies the PDF. It is paywalled — `arc.aiaa.org`
-returns 403 — and has no arXiv preprint, which is how the other five figureless
-entries were resolved (their preprints are now in `papers/`).
+**Bring it back when:** Ethan supplies the PDF. Then restore the markup below,
+recreate the `<section class="pub-year"><h2>2023</h2>` wrapper around it, crop a
+figure per `.claude/skills/publications-page/SKILL.md`, and drop the
+`pub-item-nofigure` class.
+
+```html
+  <article class="pub-item pub-item-nofigure">
+    <div class="pub-meta">
+      <h3>Two-point measurements on the acoustic field of subsonic turbulent jets</h3>
+      <p class="pub-authors">B. Gramiscelli Hasparyk, P. Jordan, A. Lebedev, L. Lesshafft, E. Pickering, T. Colonius</p>
+      <p class="pub-venue">AIAA AVIATION 2023 Forum, 4290 (2023)</p>
+      <div class="pub-links">
+        <a href="https://doi.org/10.2514/6.2023-4290" target="_blank" rel="noreferrer">DOI</a>
+      </div>
+      <details>
+        <summary>Abstract</summary>
+        <p>
+          Two-point acoustic measurements are made for subsonic, isothermal turbulent jets over a range of
+          Mach numbers, spanning from 0.4 to 0.9. The measurements are made using two antennae, each with
+          18 azimuthally distributed microphones, that can be independently displaced in the streamwise
+          direction. The measurement system is used to construct CSD matrices of the sound field for each
+          Mach number. We report a detailed analysis of the two-point structure of the sound field, which
+          is decomposed using a Fourier series in azimuth, Fourier transform in time, and Spectral Proper
+          Orthogonal Decomposition in the inhomogeneous streamwise direction. Analysed in this way, Mach-
+          and Strouhal-number dependencies of the low-rank structure of the sound field are explored.
+          Based on Crow’s model [1], we use a wavepacket source to explore features of the axisymmetric
+          mode of the radiated sound. The model considers all components of Lighthill’s stress tensor to
+          understand the physics behind the observed trends, and this suggests a modification to Crow’s
+          wavepacket. The model proposed reproduces qualitatively some of the different scalings observed
+          at low and high polar angles.
+        </p>
+      </details>
+    </div>
+  </article>
+```
 
 ## Cosmetic debt
 
