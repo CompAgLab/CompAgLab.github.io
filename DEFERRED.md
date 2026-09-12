@@ -41,22 +41,15 @@ functions (AI-Driven Drug Discovery Summit 2024, PAG 2024), and the
 output-weighted sampling material in `~/Downloads` may hold one. Insert it
 between "Active Learning for Ag" and "Agents for Ag Design".
 
-## Research pillar: "Agents for Ag Design" — a higher-resolution graphic
+## Research pillar: "Agents for Ag Design" — artwork resolved
 
-The pillar now uses the AgCRADLE workflow graphic pulled from the VIPR team page
-(`images/research/vipr-ag-agents.jpg`). **It is only 832×357** — the largest
-version published there, and no PDF/PNG original is reachable at that URL. In the
-300px pillar column it reads fine, but enlarged the grower-question text is tight.
+The pillar uses the AgCRADLE workflow graphic. Ethan supplied a 2556×1084
+original on 2026-09-12, replacing the 832×357 copy scraped from the VIPR team
+page, so it is now readable when enlarged. Nothing outstanding.
 
 It briefly used the PEAgent figure (`images/pubpic/yao2026peagent.png`). **That
 was wrong:** despite the name, PEAgent is a framework and web portal for training
 and interpreting sequence models — there is no agent in it. Don't reuse it here.
-
-**Bring it back when:** Ethan can supply the original export. Checked and ruled
-out: `Agents_for_Agriculture_Introduction_UGA_Refresh.pptx`,
-`Agents_for_Agriculture_Introduction_UGA_Agenda_Publication_Update.pptx`, and
-`Agents_for_Agriculture_Graduate_Kickoff.pptx` — the graphic is not among their
-embedded media (checked by perceptual comparison, nearest match was unrelated).
 
 ## Publications left off the site
 
