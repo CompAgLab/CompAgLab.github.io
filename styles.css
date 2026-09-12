@@ -307,6 +307,13 @@ main p {
   border-bottom: 1px solid var(--border);
 }
 
+/* Entries with no figure yet: let the text use the full width rather than
+   being squeezed into the 180px image column. */
+.pub-item-nofigure,
+.pub-item:not(:has(.pub-image)) {
+  grid-template-columns: 1fr;
+}
+
 .pub-item:last-child {
   border-bottom: none;
 }
