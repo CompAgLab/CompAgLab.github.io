@@ -111,6 +111,20 @@ figure per `.claude/skills/publications-page/SKILL.md`, and drop the
   </article>
 ```
 
+## Repository size
+
+Measured 2026-09-12: published site ~240 MB against GitHub Pages' **1 GB hard
+limit**; repo 477 MB on disk against a 1 GB recommendation; `.git` alone 237 MB.
+`papers/` is 188 MB, 78% of what we publish. History grows monotonically -
+replaced and recompressed PDFs keep their old blobs forever.
+
+**Act when:** the repo passes ~700 MB. Two options, neither urgent:
+
+1. Stop hosting PDFs that are one DOI or arXiv click away. Dropping the six
+   largest reclaims ~90 MB of the published site. Costs readers a click.
+2. Rewrite history to purge superseded blobs, reclaiming most of `.git`. This
+   rewrites every commit SHA on a public repo - only on an explicit ask.
+
 ## Cosmetic debt
 
 - **Headshot aspect ratios.** `.person-photo img` is `height: auto`, so Roth

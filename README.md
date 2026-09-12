@@ -2,6 +2,8 @@
 
 The Computational Agriculture Lab's website — <https://compaglab.github.io>
 
+**New here? Read [`START_HERE.md`](START_HERE.md) first.**
+
 Plain static HTML served by GitHub Pages from `main`. **No Jekyll, no build
 step.** Edit the `.html` files directly; what is committed is what ships.
 

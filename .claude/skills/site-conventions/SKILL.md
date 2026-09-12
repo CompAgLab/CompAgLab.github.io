@@ -5,6 +5,10 @@ description: Shared conventions for the CompAgLab static site - repo layout, the
 
 # CompAgLab site conventions
 
+New to this repo? Read `START_HERE.md` at the repo root first - it orients you on
+the site's purpose, audience, visual design, and current state. This skill is the
+mechanics.
+
 `~/Documents/git/CompAgLab.github.io` serves <https://compaglab.github.io> from
 GitHub Pages on `main`. **Plain static HTML. No Jekyll, no build step, no
 package.json.** What is in the repo is what ships, byte for byte.
@@ -122,6 +126,26 @@ done
 ```
 
 Check new binaries actually serve: `curl -s -o /dev/null -w '%{http_code} %{size_download}' <url>`.
+
+## Size budget
+
+Measured 2026-09-12. Nothing is at risk; know the shape before adding binaries.
+
+| Limit | GitHub | Us |
+|---|---|---|
+| Single file | 50 MiB warns, **100 MiB blocks** | 31 MB max (`pickering2021thesis.pdf`) |
+| **Published Pages site** | **1 GB hard** | ~240 MB |
+| Pages source repo | 1 GB recommended | 477 MB on disk |
+| Pages bandwidth / builds | 100 GB/mo, 10 builds/hr (both soft) | far below |
+
+`papers/` is 188 MB, **78% of what we publish**. `.git` is 237 MB - larger than the
+working tree - because every replaced or recompressed PDF leaves its old blob in
+history permanently. Revisit past ~700 MB; the fixes then are to stop hosting PDFs
+that are one DOI click away, or to rewrite history (disruptive on a public repo -
+only on an explicit ask from Ethan).
+
+Compress any PDF over ~10MB before committing (see `publications-page`), and
+remember a replacement does not reclaim the original's space.
 
 ## House rules
 
