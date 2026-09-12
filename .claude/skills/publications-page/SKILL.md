@@ -41,6 +41,9 @@ certainty that nothing is missing. OpenAlex indexes essentially the same works.
 | Crossref | resolve a DOI from a title | `api.crossref.org/works?query.bibliographic=<title>` |
 | arXiv | preprint metadata | `export.arxiv.org/api/query?id_list=<id>` |
 
+OpenAlex is also where abstracts come from - see the abstract bullet under
+*Entry anatomy*.
+
 OpenAlex has split Ethan across **two author entities** (`A5061968827`, 36 works;
 `A5141073323`, 2) - always query both. It also returns Zenodo deposits, Research
 Square mirrors, BAPS meeting abstracts, and arXiv duplicates of published papers;
@@ -91,8 +94,21 @@ Square mirrors, BAPS meeting abstracts, and arXiv duplicates of published papers
   `<b>Accepted</b>`, or `<b>Preprint</b>, bioRxiv <id> (YEAR)`. Revisit these -
   "Accepted" entries for JASA 2021 and JFM 2025 were both stale for years.
 - **No figure?** The article tag must be `class="pub-item pub-item-nofigure"`.
-- **Never write an abstract you did not read.** Copy it from the PDF, or omit the
-  `<details>` block entirely.
+- **Every entry carries an abstract** (`check_site.py` enforces it). Get one with:
+
+  ```bash
+  python3 scripts/fetch_abstract.py --html 10.1017/jfm.2024.525
+  ```
+
+  It reads OpenAlex (which stores abstracts as an inverted index and has had one
+  for every paper on this site, *including those with no local PDF* -- which is
+  why it beats extracting from the PDF), falls back to Crossref, and cleans the
+  artefacts publishers ship: LaTeX math delimiters (`$Re = 450\,000$` ->
+  `Re = 450,000`), AIAA's `View Video Presentation: <url>` prefix, stray
+  backslash commands, and spaces stranded before punctuation.
+
+- **Never write an abstract yourself.** If neither source has one, copy it from
+  the PDF verbatim. An invented abstract is worse than no entry.
 
 ## 3. PDFs
 

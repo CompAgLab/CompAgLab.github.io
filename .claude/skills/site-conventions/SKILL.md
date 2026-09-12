@@ -19,6 +19,7 @@ files/                  CV
 lightbox.js             click-to-enlarge for figures (publications + research)
 scripts/check_site.py   structural validator (run before every push)
 scripts/pubs_sync.py    publication cross-check against OpenAlex/Crossref
+scripts/fetch_abstract.py  fetch + clean one abstract by DOI
 ```
 
 ## Layout widths

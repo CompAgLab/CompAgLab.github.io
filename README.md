@@ -27,7 +27,11 @@ python3 scripts/pubs_sync.py      # publications.html vs OpenAlex/Crossref
 ```
 
 Reports publications that are missing, or that lack a DOI/arXiv link the public
-record knows about. Google Scholar blocks automated access to its profile pages,
+record knows about.
+
+```bash
+python3 scripts/fetch_abstract.py --html <doi>   # abstract, cleaned and wrapped
+``` Google Scholar blocks automated access to its profile pages,
 so this uses OpenAlex as the automated stand-in — the Scholar profile itself
 stays a manual check.
 

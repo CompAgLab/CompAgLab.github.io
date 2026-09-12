@@ -8,7 +8,7 @@ Checks, in order:
   1. Every HTML page's tags balance (a stray </article> silently reflows a page).
   2. Every local src=/href= target exists on disk (catches PDFs linked but never copied).
   3. publications.html invariants: one links block per entry, no empty entries,
-     figureless entries carry .pub-item-nofigure.
+     every entry carries an abstract, figureless entries carry .pub-item-nofigure.
   4. people.html invariants: every person card has a photo that exists.
   5. Zoomable figures: any img[data-full] points at a file that exists, and
      every figure inside .pub-image / .pillar-media is zoomable.
@@ -95,6 +95,9 @@ def check_publications():
         for field in ("pub-authors", "pub-venue"):
             if field not in body:
                 fail(f"publications: missing .{field} in {name!r}")
+        if "<summary>Abstract</summary>" not in body:
+            fail(f"publications: no abstract in {name!r} "
+                 f"(fetch one: python3 scripts/fetch_abstract.py <doi>)")
     # the 180px/1fr grid squeezes text into the image column without this class
     for m in re.finditer(r'<article class="(pub-item[^"]*)">((?:(?!</article>).)*?)</article>',
                          html, re.S):
