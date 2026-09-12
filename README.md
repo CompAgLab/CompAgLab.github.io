@@ -31,6 +31,9 @@ record knows about. Google Scholar blocks automated access to its profile pages,
 so this uses OpenAlex as the automated stand-in — the Scholar profile itself
 stays a manual check.
 
+Deliberately deferred work — content pulled for now, and what would bring it
+back — is tracked in [`DEFERRED.md`](DEFERRED.md).
+
 ## Editing guides
 
 Each page has a skill under `.claude/skills/` documenting its structure and the

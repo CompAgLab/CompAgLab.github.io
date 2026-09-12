@@ -130,3 +130,5 @@ Check new binaries actually serve: `curl -s -o /dev/null -w '%{http_code} %{size
   field out and say it is missing. Constructed DOIs have already been wrong once
   (see publications-page, bioRxiv prefix).
 - Stage changes and stop unless the user asks to commit or push.
+- Content pulled from the site goes in `DEFERRED.md` with its markup preserved
+  and a note on what would bring it back - don't just delete it.
